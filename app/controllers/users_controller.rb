@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     #binding.pry
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = "#{@user.name}さん! ようこそ Original Piano App へ"
       redirect_to root_path
     else

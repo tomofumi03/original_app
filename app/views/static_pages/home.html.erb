@@ -1,9 +1,12 @@
 <div class="center jumbotron">
-  <h1>Original Piano App</h1>
+  <h3>Original Piano App</h3>
 
   <h2>
     For the Teacher and the Student
   </h2>
-
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-default" %>
+  <% if logged_in? %>
+    <%= "こんにちは#{@current_user.name}さん！" %>
+  <% else %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-default" %>
+  <% end %>
 </div>
