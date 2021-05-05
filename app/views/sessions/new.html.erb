@@ -13,7 +13,13 @@
         <%= f.password_field :password, class: 'form-control' %>
 
         <%= f.submit "ログイン", class: "btn btn-default" %>
+
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>ログインしたままにする</span>
+        <% end %>
       <% end %>
+
     </div>
   </div>
 </div>
