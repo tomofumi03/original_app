@@ -201,3 +201,55 @@ input {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/* messages */
+
+.messages {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 10;
+    margin-right: 90%;
+
+  }
+  .content {
+    display: block;
+    margin-left: 0px;
+    word-wrap:break-word;
+    text-align: left;
+
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 70%;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
