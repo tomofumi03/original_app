@@ -7,7 +7,8 @@
 
         <% if logged_in? %>
           <% if current_user.admin? %>
-           <li><%= link_to "Users", users_path %></li>
+           <li><%= link_to "Users", users_path %>
+           </li>
           <% end %>
           <li><%= link_to "#{current_user.name}さん", current_user %></li>
           <li class="dropdown">
@@ -17,7 +18,7 @@
            <ul class="dropdown-menu">
              <li><%= link_to "Profile", current_user %></li>
              <li><%= link_to "Schedule", '#' %></li>
-             <li><%= link_to "Message", message_path(current_user) %></li>
+             <li><%= link_to "Message", '#' %></li>
              <li><%= link_to "Log out", logout_path, method: :delete %></li>
              <li class="divider"></li>
            </ul>

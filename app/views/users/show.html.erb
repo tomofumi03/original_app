@@ -1,18 +1,5 @@
 <% provide(:title, @user.name) %>
-<% if @user.id == current_user.id %>
 
-<% else %>
-  <% if @isRoom == true %>
-    <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, :value=> @user.id %>
-      <% end %>
-      <%= f.submit "チャットを始める" %>
-    <% end %>
-  <% end %>
-<% end %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -20,8 +7,21 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <% if @user == current_user%>
-        <%= link_to "編集する", edit_user_path(current_user) %>
+      <% if @user == current_user %>
+        <%= link_to "編集する", edit_user_path %>
+      <% end %>
+      <% if @user.id == current_user.id %>
+      <% else %>
+        <% if @isRoom == true %>
+          <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value=> @user.id %>
+            <% end %>
+            <%= f.submit "メッセージを送る" %>
+          <% end %>
+        <% end %>
       <% end %>
     </section>
   </aside>

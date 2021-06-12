@@ -1,10 +1,10 @@
 class MessagesController < ApplicationController
 
   def show
-    #binding.pry
     @user = User.find(params[:id])
     @message = Message.new
     @messages = @user.messages.all
+    @room = Room.find(params[:id])
 
   end
 

@@ -8,9 +8,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    #binding.pry
     @user = User.find(params[:id])
     @currentUserEntry = Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
+    @userEntry = Entry.where(user_id: @user.id)
     if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
   end
 
   def update
@@ -55,8 +57,28 @@ class UsersController < ApplicationController
   end
 
   def index
+    #binding.pry
     @users = User.paginate(page: params[:page])
-    
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @users.ids)
+    if @users.ids == current_user.id
+    else
+      #binding.pry
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
+
   end
 
   def destroy
