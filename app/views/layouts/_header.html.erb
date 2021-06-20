@@ -18,7 +18,11 @@
            <ul class="dropdown-menu">
              <li><%= link_to "Profile", current_user %></li>
              <li><%= link_to "Schedule", '#' %></li>
-             <li><%= link_to "Message", '#' %></li>
+             <% if current_user.admin? %>
+               <li><%= link_to "Message", users_path %></li>
+             <% else %>
+               <li><%= link_to "Message", user_path(id: 1 ) %></li>
+             <% end %>
              <li><%= link_to "Log out", logout_path, method: :delete %></li>
              <li class="divider"></li>
            </ul>
