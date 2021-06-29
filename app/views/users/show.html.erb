@@ -23,7 +23,11 @@
           <% end %>
         <% end %>
       <% end %>
-      <p><%= link_to "スケジュール", event_path(@event) %></p>
+      <% if @event == true %>
+        <p><%= link_to "スケジュール", event_path(@event) %></p>
+      <% else %>
+        <p><%= link_to "スケジュール", "#" %></p>
+      <% end %>
     </section>
 
   </aside>
