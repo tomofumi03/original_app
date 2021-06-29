@@ -4,7 +4,7 @@
 <h1>ダイレクトメッセージ</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <h4>参加者</h4>
+    <h4>メンバー</h4>
     <% @entries.each do |e| %>
       <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.name %></a></strong></h5>
     <% end %>
@@ -29,14 +29,15 @@
     <% end %>
 
     <%= form_for @message do |f| %>
+
       <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
       <%= f.hidden_field :room_id, :value => @room.id %>
       <br>
       <%= f.submit "投稿する" %>
     <% end %>
-
-    <%= link_to "ユーザー一覧に戻る", users_path %>
-
+    <% if current_user.admin? %>
+      <%= link_to "ユーザー一覧に戻る", users_path %>
+    <% end %>
 
   </div>
 </div>

@@ -17,7 +17,7 @@
            </a>
            <ul class="dropdown-menu">
              <li><%= link_to "Profile", current_user %></li>
-             <li><%= link_to "Schedule", '#' %></li>
+             <li><%= link_to "Schedule", event_path(Event.where(user_id: current_user.id)) %></li>
              <% if current_user.admin? %>
                <li><%= link_to "Message", users_path %></li>
              <% else %>

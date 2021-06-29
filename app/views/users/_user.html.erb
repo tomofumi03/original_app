@@ -6,32 +6,23 @@
                                   data: { confirm: "削除しますか?" } %>
 
   <% end %>
-  <% if user.id == current_user.id %>
 
-  <% else %>
-    <% if @isRoom == true %>
-      <% @currentUserEntry = Entry.where(user_id: current_user.id) %>
-      <% @userEntry = Entry.where(user_id: user.id) %>
-        <% if user.id == current_user.id %>
-        <% else %>
-          <% @currentUserEntry.each do |cu| %>
-            <% @userEntry.each do |u| %>
-              <% if cu.room_id == u.room_id then %>
-                <% @isRoom = true %>
-                <% @roomId = cu.room_id %>
-              <% end %>
-            <% end %>
+  <% @currentUserEntry = Entry.where(user_id: current_user.id) %>
+  <% @userEntry = Entry.where(user_id: user.id)%>
+    <% if user.id == current_user.id %>
+    <% else %>
+      <% @currentUserEntry.each do |cu| %>
+        <% @userEntry.each do |u| %>
+          <% if cu.room_id == u.room_id then %>
+            <% @isRoom = true %>
+            <% @roomId = cu.room_id %>
+            <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
           <% end %>
         <% end %>
-      <p><a href="/rooms/<%= @roomId %>">メッセージ</a>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, :value=> user.id %>
-        <% end %>
-        <%= f.submit "メッセージを送る" %>
+      <% end %>
+      <% if @isRoom %>
+      <% else %>
+        <% @room = Room.new %>
       <% end %>
     <% end %>
-  <% end %>
-
 </li>

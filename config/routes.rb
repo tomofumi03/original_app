@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
   resources :rooms, :only => [:create, :show, :index]
+  resources :events
+
 end

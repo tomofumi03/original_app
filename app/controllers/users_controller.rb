@@ -28,6 +28,7 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
+    @event = Event.find_by(user_id: @user.id)
   end
 
   def create
