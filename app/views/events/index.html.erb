@@ -1,15 +1,22 @@
 <% provide(:title, 'Events') %>
-
-<h1>レッスンスケジュール</h1>
-
-<%= link_to 'イベント追加', new_event_path %>
-
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
-
-  <% events.each do |event| %>
-    <div>
-      <%= event.title %>
-    </div>
+<table>
+  <tr>
+    <% t('date.abbr_day_names').each do |day_name| %>
+      <td>
+        <%= day_name %>
+      </td>
+    <% end %>
+  </tr>
+  <% @calendar_data.each do |date| %>
+    <% if date.wday == 0 %>
+      <tr>
+    <% end %>
+    <td>
+      <%= date.day %>
+    </td>
+    <% if date.wday == 6 %>
+    </tr>
+    <% end %>
   <% end %>
-<% end %>
+</table>
+<p><%= @today.strftime("< %m / %Y >") %></p>

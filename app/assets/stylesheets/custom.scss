@@ -27,6 +27,15 @@ textarea {
 
 .center {
   text-align: center;
+  width: 80vw;
+  height: 80vh;
+  background-image: url('piano.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 70%;
+  background-color: #464646;
+  opacity: 0.8;
 }
 
 .center h1 {
@@ -47,12 +56,16 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: white;
+}
+h3 {
+  color: white;
+  font-size: 3.5em;
 }
 
 p {

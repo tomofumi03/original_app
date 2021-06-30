@@ -23,7 +23,7 @@
           <% end %>
         <% end %>
       <% end %>
-      <% if @event == true %>
+      <% if @event %>
         <p><%= link_to "スケジュール", event_path(@event) %></p>
       <% else %>
         <p><%= link_to "スケジュール", "#" %></p>
