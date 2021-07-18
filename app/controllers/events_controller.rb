@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
 
-
   def index
     @today = Date.today
     from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
@@ -10,10 +9,12 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
+
   def create
+    #binding.pry
     @event = Event.create(event_params)
     if @event.save
       flash[:success] = "イベントが追加されました"
@@ -25,13 +26,16 @@ class EventsController < ApplicationController
 
   def show
     #binding.pry
-    @events = Event.where(user_id: current_user.id)
+    @event = Event.new
+    @events = Event.where(user_id: params[:id])
+    @user = User.find_by(params[:id])
+    @all_events = Event.all
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :start_time, :user_id)
+    params.require(:event).permit(:number, :lesson_time, :content, :start_time, :user_id)
   end
 
 

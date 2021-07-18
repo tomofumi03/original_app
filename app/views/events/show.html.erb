@@ -1,15 +1,53 @@
 <% provide(:title, 'Events') %>
 
 <h1>レッスンスケジュール</h1>
+<div class="row">
+  <div class="col-md-2 col-md-offset-0">
+    <%= form_with(model: @event, local: true) do |form| %>
 
-<%= link_to 'イベント追加', new_event_path %>
+      <%= form.label :レッスン回数 %>
+      <%= form.number_field :number ,{min: 1, max: 60} %>
 
-<%= month_calendar events: @events do |date, events| %>
-  <%= date.day %>
+      <%= form.label :レッスン時間 %>
+      <%= form.select :lesson_time, {'30分': 1, '１時間': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
 
-  <% events.each do |event| %>
-    <div>
-      <%= event.title %>
-    </div>
-  <% end %>
-<% end %>
+      <%= form.label :レッスン開始時間 %>
+      <%= form.datetime_select :start_time %>
+
+      <%= form.label :メモ %>
+      <%= form.text_field :content %>
+
+      <%= form.hidden_field :user_id, :value=> @user.id %>
+
+      <%= form.submit yield(:button_text), class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+
+
+
+  <div class="col-md-10 col-md-offset-0">
+    <%= link_to 'イベント追加', new_event_path %>
+    <% if current_user.admin? %>
+      <%= month_calendar events: @all_events do |date, events| %>
+        <%= date.day %>
+        <% events.each do |event| %>
+
+            <li><%= link_to event.user_id, "#" %></li>
+            <li><%= link_to event.content, "#" %></li>
+
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= month_calendar events: @events do |date, events| %>
+        <%= date.day %>
+        <% events.each do |event| %>
+          <div>
+            <%= link_to event.user_id, "#" %>
+            <%= link_to event.content, "#" %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

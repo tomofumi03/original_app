@@ -23,12 +23,13 @@
           <% end %>
         <% end %>
       <% end %>
-      <% if @event %>
-        <p><%= link_to "スケジュール", event_path(@event) %></p>
-      <% else %>
-        <p><%= link_to "スケジュール", "#" %></p>
-      <% end %>
+        <% if current_user.admin? %>
+          <p><%= link_to "スケジュール", event_path(@event) %></p>
+        <% else %>
+          <% if current_user == @user %>
+            <p><%= link_to "スケジュール", event_path(@event) %></p>
+          <% end %>
+        <% end %>
     </section>
-
   </aside>
 </div>
