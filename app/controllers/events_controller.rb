@@ -8,8 +8,9 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
-    @user = User.find(params[:id])
+    #binding.pry
+    #@event = Event.new
+    #@user = User.find(params[:id])
   end
 
 

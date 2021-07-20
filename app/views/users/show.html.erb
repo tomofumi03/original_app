@@ -32,10 +32,8 @@
         <% else %>
           <% if current_user == @user %>
             <% if @event %>
-
               <p><%= link_to "スケジュール", event_path(@event) %></p>
             <% else %>
-            <% binding.pry %>
               <p><%= link_to "スケジュール", event_path(@user) %></p>
             <% end %>
           <% end %>

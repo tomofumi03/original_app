@@ -1,6 +1,6 @@
 <% provide(:title, 'Events') %>
 
-<h1>レッスンスケジュール</h1>
+<h1><%= @user.name %>さんのレッスンスケジュール</h1>
 <div class="row">
   <div class="col-md-2 col-md-offset-0">
     <%= form_with(model: @event, local: true) do |form| %>
@@ -19,7 +19,7 @@
 
       <%= form.hidden_field :user_id, :value=> @user.id %>
 
-      <%= form.submit yield(:button_text), class: "btn btn-default" %>
+      <%= form.submit :登録, class: "btn btn-default" %>
     <% end %>
   </div>
 
@@ -27,7 +27,6 @@
 
 
   <div class="col-md-10 col-md-offset-0">
-    <%= link_to 'イベント追加', new_event_path %>
     <% if current_user.admin? %>
       <%= month_calendar events: @all_events do |date, events| %>
         <%= date.day %>
@@ -44,7 +43,6 @@
         <% events.each do |event| %>
           <div>
             <%= link_to event.user_id, "#" %>
-            <%= link_to event.content, "#" %>
           </div>
         <% end %>
       <% end %>
