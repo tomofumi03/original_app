@@ -29,6 +29,7 @@ class EventsController < ApplicationController
     #binding.pry
     @event = Event.new
     @events = Event.where(user_id: params[:id])
+    #binding.pry
     @user = User.find(params[:id])
     @all_events = Event.all
   end
