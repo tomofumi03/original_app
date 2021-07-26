@@ -8,14 +8,10 @@ class EventsController < ApplicationController
   end
 
   def new
-    #binding.pry
-    #@event = Event.new
-    #@user = User.find(params[:id])
   end
 
 
   def create
-    #binding.pry
     @event = Event.create(event_params)
     if @event.save
       flash[:success] = "イベントが追加されました"
@@ -26,10 +22,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    #binding.pry
     @event = Event.new
     @events = Event.where(user_id: params[:id])
-
     @user = User.find(params[:id])
     @all_events = Event.all
 
