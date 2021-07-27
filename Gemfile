@@ -13,14 +13,14 @@ gem 'jbuilder',     '2.7.0'
 gem 'font-awesome-rails'
 gem 'pry-rails'
 gem 'rails-i18n'
-gem 'pry-byebug'
+
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'simple_calendar', '~> 2.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
-  gem 'byebug',  '9.0.6', platform: :mri
+  gem 'byebug',  '11.0', platform: :mri
 end
 
 group :development do
@@ -28,6 +28,7 @@ group :development do
   gem 'listen',                '3.1.5'
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
+  gem 'pry-byebug',            '3.9.0'
 end
 
 group :test do
