@@ -3,24 +3,7 @@
 <h1><%= @user.name %>さんのレッスンスケジュール</h1>
 <div class="row">
   <div class="col-md-2 col-md-offset-0">
-    <%= form_with(model: @event, local: true) do |form| %>
-
-      <%= form.label :レッスン回数 %>
-      <%= form.number_field :number ,{min: 1, max: 60} %>
-
-      <%= form.label :レッスン時間 %>
-      <%= form.select :lesson_time, {'30分': 30, '１時間': 60}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-
-      <%= form.label :レッスン開始時間 %>
-      <%= form.datetime_select :start_time %>
-
-      <%= form.label :メモ %>
-      <%= form.text_field :content %>
-
-      <%= form.hidden_field :user_id, :value=> @user.id %>
-
-      <%= form.submit :登録, class: "btn btn-default" %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 
   <div class="col-md-10 col-md-offset-0">
@@ -62,7 +45,7 @@
 						<td><%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>~</td>
             <td><%= event.lesson_time%>分</td>
 						<td><%= event.content%></td>
-						<td><%=link_to "編集", "#",:class=>"btn04" %></td>
+						<td><%=link_to "編集", edit_event_path,:class=>"btn04" %></td>
 						<td><%=link_to "削除", "#", data: {confirm:"削除しますか"} ,:class=>"btn03" %></td>
 					</tr>
 				</tbody>

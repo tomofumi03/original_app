@@ -10,6 +10,22 @@ class EventsController < ApplicationController
   def new
   end
 
+  def edit
+    #binding.pry
+    @event = Event.find(params[:id])
+    @user = User.find(@event.user_id)
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      redirect_to event_path
+      flash[:success] = "イベントが変更されました"
+    else
+      render 'edit'
+    end
+  end
+
 
   def create
     @event = Event.create(event_params)

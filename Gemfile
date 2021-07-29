@@ -13,7 +13,6 @@ gem 'jbuilder',     '2.7.0'
 gem 'font-awesome-rails'
 gem 'pry-rails'
 gem 'rails-i18n'
-
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'simple_calendar', '~> 2.0'
