@@ -45,7 +45,7 @@
 						<td><%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>~</td>
             <td><%= event.lesson_time%>分</td>
 						<td><%= event.content%></td>
-						<td><%=link_to "編集", edit_event_path,:class=>"btn04" %></td>
+						<td><%=link_to "編集", edit_event_path(event),:class=>"btn04" %></td>
 						<td><%=link_to "削除", "#", data: {confirm:"削除しますか"} ,:class=>"btn03" %></td>
 					</tr>
 				</tbody>
