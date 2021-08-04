@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :logged_in_user
+
   def index
     @today = Date.today
     from_date = Date.new(@today.year, @today.month, @today.beginning_of_month.day).beginning_of_week(:sunday)
@@ -50,6 +52,14 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:number, :lesson_time, :content, :start_time, :user_id)
+  end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
   end
 
 
