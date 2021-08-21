@@ -1,0 +1,23 @@
+<% if current_user.admin? %>
+  <%= month_calendar events: @all_events do |date, events| %>
+    <%= link_to date.day, "#" %>
+    <% events.each do |event| %>
+      <% user = User.find_by(id: event.user_id)  %>
+      <li>
+        <%= link_to user.name, "#" %>
+        <%= event.number %>回目
+      </li>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= month_calendar events: @events do |date, events| %>
+    <%= date.day %>
+    <% events.each do |event| %>
+      <% user = User.find_by(id: event.user_id) %>
+      <li>
+        <%= link_to user.name, "#" %>
+        <%= event.number %>回目
+      </li>
+    <% end %>
+  <% end %>
+<% end %>

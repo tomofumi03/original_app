@@ -5,51 +5,8 @@
   <div class="col-md-2 col-md-offset-0">
     <%= render 'form' %>
   </div>
-
   <div class="col-md-10 col-md-offset-0">
-
-    <% if current_user.admin? %>
-      <%= month_calendar events: @all_events do |date, events| %>
-        <%= date.day %>
-        <% events.each do |event| %>
-          <% user = User.find_by(id: event.user_id)  %>
-          <li>
-            <%= link_to user.name, "#" %>さん
-          </li>
-        <% end %>
-      <% end %>
-    <% else %>
-      <%= month_calendar events: @events do |date, events| %>
-        <%= date.day %>
-        <% events.each do |event| %>
-          <% user = User.find_by(id: event.user_id) %>
-          <li>
-            <%= link_to user.name, "#" %>さん
-          </li>
-        <% end %>
-      <% end %>
-    <% end %>
-    <table class="events table table-bordered">
-			<thead>
-				<tr>
-					<th>レッスン回数    /年間60回</th>
-					<th>レッスン日時</th>
-					<th>レッスン時間</th>
-					<th>メモ</th>
-				</tr>
-		  </thead>
-			<% @events.each do |event| %>
-				<tbody>
-					<tr>
-						<td><%= event.number%>回目</td>
-						<td><%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>~</td>
-            <td><%= event.lesson_time%>分</td>
-						<td><%= event.content%></td>
-						<td><%=link_to "編集", edit_event_path(event),:class=>"btn04" %></td>
-						<td><%=link_to "削除", "#", data: {confirm:"削除しますか"} ,:class=>"btn03" %></td>
-					</tr>
-				</tbody>
-			<% end %>
-  		</table>
+    <%= render 'calendar' %>
+    <%= render 'table' %>
   </div>
 </div>

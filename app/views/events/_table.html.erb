@@ -1,0 +1,22 @@
+<table class="events table table-bordered">
+  <thead>
+    <tr>
+      <th>レッスン回数    /年間60回</th>
+      <th>レッスン日時</th>
+      <th>レッスン時間</th>
+      <th>メモ</th>
+    </tr>
+  </thead>
+  <% @events.each do |event| %>
+    <tbody>
+      <tr>
+        <td><%= event.number%>回目</td>
+        <td><%= event.start_time.strftime("%Y年%m月%d日 %H:%M") %>~</td>
+        <td><%= event.lesson_time%>分</td>
+        <td><%= event.content%></td>
+        <td><%=link_to "編集", edit_event_path(event),:class=>"btn04" %></td>
+        <td><%=link_to "削除", event_path(event.id), method: :delete, data: {confirm:"削除しますか?"} ,:class=>"btn03" %></td>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
