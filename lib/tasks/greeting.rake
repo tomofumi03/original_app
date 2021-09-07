@@ -1,6 +1,6 @@
 namespace :greeting do
-  desc '挨拶するメールを発行する。'
-  task say_hello: :environment do
+  desc '支払いを思い出させる'
+  task remind_payment: :environment do
     users = User.all
 
     users.each do |user|
