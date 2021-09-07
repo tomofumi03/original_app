@@ -105,4 +105,5 @@ Rails.application.configure do
       password:             ENV['SENDGRID_PASSWORD'],
       domain:               'heroku.com',
       enable_starttls_auto: true
+  }
 end
