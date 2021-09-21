@@ -97,8 +97,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options   = { host: 'original-piano-app.herokuapp.com' }
   ActionMailer::Base.smtp_settings           = {
       address:              'smtp.sendgrid.net',
-      port:                 587,
-      authentication:       'plain',
+      port:                 '587',
+      authentication:       :plain,
       user_name:            ENV['SMTP_USER'],
       password:             ENV['SMTP_PASS'],
       domain:               ENV['SMTP_DOMAIN'],
